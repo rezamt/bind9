@@ -1,0 +1,12 @@
+$TTL	86400 ; 1 day - $TTL used for all RRs without explicit TTL value
+$ORIGIN example.com.
+@  IN  SOA ns1.example.com. hostmaster.example.com. (
+			      2002022401 ; serial
+			      3H ; refresh
+			      15 ; retry
+			      1w ; expire
+			      3h ; nxdomain ttl
+			     )
+; PTR Records
+$GENERATE
+$GENERATE 1-251 $ NS ns1.anotherdomain.com  # Transfer all reverse lookup for /24 above to another DNS Server

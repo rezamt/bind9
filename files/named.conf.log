@@ -1,0 +1,49 @@
+logging {
+    channel query_log {
+        file "/var/log/bind/query.log" versions 3 size 5m;
+        // Set the severity to dynamic to see all the debug messages.
+            print-category yes;
+        print-severity yes;
+        print-time yes;
+        severity dynamic;
+        };
+    channel update_debug {
+        file "/var/log/bind/update_debug.log" versions 3 size 5m;
+        severity debug ;
+        print-category yes;
+        print-severity yes;
+        print-time yes;
+        };
+    channel security_info {
+        file "/var/log/bind/security_info.log" versions 3 size 5m;
+        severity info;
+        print-category yes;
+        print-severity yes;
+        print-time yes;
+        };
+    channel bind_log {
+        file "/var/log/bind/bind.log" versions 3 size 5m;
+        severity info;
+        print-category yes;
+        print-severity yes;
+        print-time yes;
+        };
+    category queries {
+        query_log; 
+        };
+    category security {
+        security_info;
+        };  
+    category update-security {
+        update_debug;
+        };
+    category update {
+        update_debug;
+        };
+    category lame-servers {
+        null;
+        };
+    category default {
+        bind_log;
+        };
+};
